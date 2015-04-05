@@ -4,7 +4,7 @@ B-spline
 
 ## Install
 
-    npm install b-spline
+    npm install b-spline2
     
 ## Example
 
