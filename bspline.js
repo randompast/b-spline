@@ -29,6 +29,9 @@ var getControlPoints = function(controlPoints, degree, index){
 var makeBspline = function(controlPoints, knots, tesselation) {
   var d = knots.length - controlPoints.length - 1 //degree
       b = new Array(tesselation*(controlPoints.length - d)) //spline
+  if(controlPoints.length <= d) {
+    throw new TypeError("cp.length < d, add more control points, or remove knots")
+  } else {
   for(var j = d - 1; j < controlPoints.length - 1; j++) {//knot index
     var cp = getControlPoints(controlPoints, d, j-d+1)
     for(var i = 0; i < tesselation; i++) {
@@ -36,6 +39,8 @@ var makeBspline = function(controlPoints, knots, tesselation) {
     }
   }
   return b
+
+  }
 }
 
 module.exports = makeBspline
