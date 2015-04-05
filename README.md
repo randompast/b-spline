@@ -2,7 +2,7 @@ B-spline
 =============
 [B-spline](http://en.wikipedia.org/wiki/B-spline) for generating a curve from a list of control points and knots.
 
-## Install
+## Install - not yet on npm!
 
     npm install b-spline2
     
