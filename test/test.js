@@ -1,27 +1,37 @@
-canvas = document.body.appendChild(document.createElement('canvas'))
-var ctx = canvas.getContext('2d')
-
-canvas.width = window.innerWidth - 20
-canvas.height = window.innerHeight - 20
-
 var bspline = require("../bspline.js")
+var test = require("tape")
 
-var spline1 = bspline(
-  //points
-    [[0,0], [200,0], [200,200], [0,200], [400,300], [600,200], [100,100]],
-  //knots
-    [1,2,3,4,5,6,7,8,9,10],
-  //tessellation
-    10)
+test("bspline", function(t) {
+	var cp = [[0,0], [200,0], [200,200], [0,200], [400,300], [600,200], [100,100]]
+	var knots = [1,2,3,4,5,6,7,8,9,10]
+	var tessellation = 5
+	var degree = knots.length - cp.length - 1
 
-var drawPath = function(arr) {
-  for(var i=0; i<arr.length-1; i++) {
-    ctx.strokeStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
-    ctx.beginPath()
-    ctx.moveTo(arr[i][0], arr[i][1])
-    ctx.lineTo(arr[(i+1)%arr.length][0], arr[(i+1)%arr.length][1])
-    ctx.stroke()
-  }
-}
+	for(var i = 0; i <= 10; i++) {
+		t.equal(bspline(cp, knots, i).length,
+			i * (cp.length - degree),
+			"spline length with tessellation level " + i)
+	}
 
-drawPath(spline1)
+	cp = [[0,0], [200,0], [200,200], [0,200], [400,300], [600,200], [100,100], [1,23], [124,32]]
+	while(degree < cp.length - 1) {
+		cp = cp.slice(1)
+		degree = knots.length - cp.length - 1
+		t.equal(bspline(cp, knots, tessellation).length,
+			tessellation * (cp.length - degree),
+			"knots.length, cp.length, degree - " + knots.length + ", " + cp.length + ", " + degree)
+	}
+
+	var cp = [[0,0], [200,0], [200,200], [0,200], [400,300], [600,200], [100,100]]
+	var knots = [1,2,3,4,5,6,7,8,9,10]
+	for(var i = 0; i < 10; i++) {
+		cp.push([Math.random()*400, Math.random()*400])
+		knots.push(knots[knots.length - 1] + 1)
+		degree = knots.length - cp.length - 1
+		t.equal(bspline(cp, knots, tessellation).length,
+			tessellation * (cp.length - degree),
+			"knots.length, cp.length, degree - " + knots.length + ", " + cp.length + ", " + degree)
+	}
+
+	t.end()
+})

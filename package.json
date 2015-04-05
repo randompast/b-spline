@@ -24,5 +24,14 @@
   ],
   "author": "Michael Kummer",
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "bugs": {
+    "url": "https://github.com/randompast/b-spline/issues"
+  },
+  "homepage": "https://github.com/randompast/b-spline",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "devDependencies": {
+    "tape": "^4.0.0"
+  }
 }
