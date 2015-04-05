@@ -33,8 +33,10 @@ test("bspline", function(t) {
 			"knots.length, cp.length, degree - " + knots.length + ", " + cp.length + ", " + degree)
 	}
 
-	t.throw(bspline([[1,0]], [1,2,3,4,5]),
-		"cp.length < d, add more control points, or remove knots",
-		"knots = points + degree + 1")
+	t.throws(function () { bspline([[1,0]], [1,2,3,4,5], 100) },
+		TypeError,
+		"#knots must be #points + degree + 1")
+
+	console.log("end")
 	t.end()
 })
