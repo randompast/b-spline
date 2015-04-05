@@ -17,6 +17,15 @@ var tessellation = 10
 var myspline = bspline(control_points, knots, tessellation)
 ```
 
+### Turn mesh positions into a spline
+```javascript
+var knots = new Array(Mesh.positions.length + 3 + 1)
+for(var i = 0; i < knots.length; i++) {
+  knots[i] = i
+}
+var spline = bspline(Mesh.positions, knots, 3)
+```
+
 ## API
 
 #### `require("b-spline")(control_points, knots, tessellation)`
