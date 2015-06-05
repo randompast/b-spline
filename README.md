@@ -35,8 +35,8 @@ The number of knots is:
 
 	knots = control_points + degree + 1
 
-## Note
-This has not been rigorously tested.  Any help in verification/optimization would be appreciated.
+## Warning
+Bug : Multiknots fail!  You probably shouldn't use this.
 
 ## Credits
 (c) 2013 Michael Kummer. MIT License
