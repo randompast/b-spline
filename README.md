@@ -2,10 +2,14 @@ B-spline
 =============
 [B-spline](http://en.wikipedia.org/wiki/B-spline) for generating a curve from a list of control points and knots.
 
+The following [example](example.js) uses the same control points and shows the effect of degree, tesselation, and knot multiplicity.
+
+![image](test/example.png)
+
 ## Install - not yet on npm!
 
     npm install b-spline2
-    
+
 ## Example
 
 ```javascript
@@ -39,4 +43,4 @@ The number of knots is:
 This has not been rigorously tested.  Any help in verification/optimization would be appreciated.
 
 ## Credits
-(c) 2013 Michael Kummer. MIT License
+(c) 2015 Michael Kummer. MIT License
