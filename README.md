@@ -2,7 +2,7 @@ B-spline
 =============
 [B-spline](http://en.wikipedia.org/wiki/B-spline) for generating a curve from a list of control points and knots.
 
-The following [example](example.js) uses the same control points and shows the effect of degree, tesselation, and knot multiplicity.
+The following [example](https://github.com/randompast/b-spline/blob/master/test/example.js) uses the same control points and shows the effect of degree, tesselation, and knot multiplicity.
 
 ![image](test/example.png)
 
